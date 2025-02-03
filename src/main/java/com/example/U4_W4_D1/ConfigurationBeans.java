@@ -10,23 +10,6 @@ import java.util.List;
 @Configuration
 public class ConfigurationBeans {
 
-    //PIZZE
-    @Bean
-    @Scope("prototype")
-    public Pizza margherita (){
-        return new Pizza("margherita", 7, 1000, margheritaToppings());
-    }
-    @Bean
-    @Scope("prototype")
-    public Pizza pizzaSalsiccia(){
-        return new Pizza("salsiccia", 8, 1200, salsicciaToppings() );
-    }
-
-    @Bean
-    @Scope("prototype")
-    public Pizza pizzaHawaii(){
-        return new Pizza("Hawaii", 12, 1400, hawaiiToppings() );
-    }
 
     //TOPPINGS
 
@@ -66,8 +49,8 @@ public class ConfigurationBeans {
     @Scope("prototype")
     public List<Topping> margheritaToppings(){
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new Topping("pomodoro", 0, 50));
-        toppings.add(new Topping("mozzarella", 0, 100));
+        toppings.add(pomodoro());
+        toppings.add(mozzarella());
         return toppings;
     }
 
@@ -76,9 +59,10 @@ public class ConfigurationBeans {
     @Scope("prototype")
     public List<Topping> salsicciaToppings(){
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new Topping("pomodoro", 0, 50));
-        toppings.add(new Topping("mozzarella", 0, 100));
-        toppings.add(new Topping("salsiccia", 1, 100));
+        toppings.add(pomodoro());
+        toppings.add(mozzarella());
+        toppings.add(salsiccia());
+
         return toppings;
     }
 
@@ -87,11 +71,28 @@ public class ConfigurationBeans {
     @Scope("prototype")
     public List<Topping> hawaiiToppings(){
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new Topping("pomodoro", 0, 50));
-        toppings.add(new Topping("mozzarella", 0, 100));
-        toppings.add(new Topping("prosciutto", 2, 200));
-        toppings.add(new Topping("ananas", 2, 100));
+        toppings.add(pomodoro());
+        toppings.add(mozzarella());
+        toppings.add(prosciutto());
+        toppings.add(ananas());
         return toppings;
+    }
+    //PIZZE
+    @Bean
+    @Scope("prototype")
+    public Pizza margherita (){
+        return new Pizza("margherita", 7, 1000, margheritaToppings());
+    }
+    @Bean
+    @Scope("prototype")
+    public Pizza pizzaSalsiccia(){
+        return new Pizza("salsiccia", 8, 1200, salsicciaToppings() );
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Pizza pizzaHawaii(){
+        return new Pizza("Hawaii", 12, 1400, hawaiiToppings() );
     }
 
     //BEVANDE
